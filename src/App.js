@@ -39,6 +39,21 @@ class App extends Component {
     .catch((e) => null);
   }
 
+  newPost = (e) => {
+    e.preventDefault();
+    let title = e.target.title.value;
+    let body = e.target.body.value;
+
+    if (title) {
+      this.state.title = title;
+      this.state.body = body;
+      this.state.author = this.state.username || 'User';
+      this.state.posted = Date.now();
+      this.state.votes = 1;
+    }
+  }
+
+
   async componentDidMount() {
     try {
       const response = await fetch('/event/list')
