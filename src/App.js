@@ -88,6 +88,14 @@ class App extends Component {
         logout={this.logout}
       />
       <EventsList />
+      <div className="canCreatePost">
+        {this.state.loggedIn ? (
+          <CreatePost newPost={this.newPost} />
+        ) : (
+          <div className="notAUser">
+            <p>Signup to start posting</p>
+          </div>
+        )}
     </div>
   );
  }
