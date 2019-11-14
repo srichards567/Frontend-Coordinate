@@ -10,10 +10,12 @@ import CreatePost from './components/CreatePost';
 
 class App extends Component {
   state = {
+    messages: [],
     initialLoad: false,
     loggedIn: false,
     username: '',
-    updated: false
+    updated: false,
+    nothing: ''
   }
 
   login = (e) => {
@@ -52,6 +54,18 @@ class App extends Component {
       this.state.votes = 1;
     }
   }
+
+  vote = (key, index, isUpvote) => {
+    let messages = [...this.state.messages];
+    let votes = messages[index].votes;
+    if (isUpvote) {
+      votes++;
+    } else {
+      votes--;
+    }
+  }
+
+  let id = key;
 
 
   async componentDidMount() {
