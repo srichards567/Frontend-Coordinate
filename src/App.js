@@ -16,6 +16,29 @@ class App extends Component {
     updated: false
   }
 
+  login = (e) => {
+    e.preventDefault();
+    const username = e.target.username.value;
+  }
+
+  if (username) {
+    fetch('/users/signup', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username })
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        this.setState({ loggedIn: true, username });
+        localStorage.setITem('username', username);
+      }
+    })
+    .catch((e) => null);
+  }
+
   async componentDidMount() {
     try {
       const response = await fetch('/event/list')
