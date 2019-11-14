@@ -87,13 +87,29 @@ class App extends Component {
         login={this.login}
         logout={this.logout}
       />
-      <EventsList />
+      <div className="container">
+        <div className="posts">
+          {!this.state.initialLoad ? (
+            <div className="center">
+            </div>
+          ) : (
+            this.state.messages.map((post, index) => (
+              <Post
+                key={post._id}
+                index={index}
+                post={post}
+                vote={this.vote}
+              />
+            ))
+          )}
+        </div>
+      </div>
       <div className="canCreatePost">
         {this.state.loggedIn ? (
           <CreatePost newPost={this.newPost} />
         ) : (
           <div className="notAUser">
-            <p>Signup to start posting</p>
+            <p>Signup to start posting!</p>
           </div>
         )}
     </div>
