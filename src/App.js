@@ -13,6 +13,9 @@ class App extends Component {
   async componentDidMount() {
     try {
       const response = await fetch('localhost:8081')
+    } catch(error) {
+      console.log('Error retrieving posts!')
+      console.log(error)
     }
   }
 
