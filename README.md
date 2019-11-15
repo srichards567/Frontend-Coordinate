@@ -20,6 +20,8 @@ Unsolved Problems:
 
 
 ### Planning Documentation and Wireframes
+Link to Presentation from my Presentation Day
+https://docs.google.com/presentation/d/1JqfYzG9CP8j_2mKolnf1hh1pGkKeWGa_JbAJju9qw9I/edit?usp=sharing
 
 ### User Stories
 As a User, I want to add different dates and time suggestions for an event so that I accommodate my team members' schedules.
