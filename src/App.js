@@ -3,7 +3,7 @@ import './App.css';
 
 //Custom Imports
 import Login from './components/Login';
-import PostList from './components/PostList';
+import PostList from './PostList';
 
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch('localhost:8081')
+      const response = await fetch('http://localhost:8081')
     } catch(error) {
       console.log('Error retrieving posts!')
       console.log(error)
@@ -25,7 +25,7 @@ class App extends Component {
     <div className="App">
       <h1>Coordinate</h1>
       <p>
-        Share questions and get answers
+        Start planning today!
       <PostList />
       </p>
     </div>

@@ -24,18 +24,10 @@ class NewPostForm extends Component {
   render() {
     return (
       <div>
-        <h2>Share Your Thoughts</h2>
+        <h2>Enter A Name for Your Event</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="title">Name</label>
-            <input
-              name="code"
-              type="text"
-              onChange={this.handleChange} />
-          </div>
-
-          <div>
-            <label htmlFor="description">Your Thoughts Here:</label>
+            <label htmlFor="description">Event Name:</label>
             <input
               name="code"
               type="text"
@@ -43,8 +35,7 @@ class NewPostForm extends Component {
           </div>
         </form>
 
-        <hr />
-        <hr />
+
       </div>
     )
   }

@@ -25,7 +25,7 @@ class PostList extends Component {
 
 async componentDidMount() {
   try {
-    const response = await fetch('localhost:8081/all')
+    const response = await fetch('http://localhost:8081/all')
     const json = await response.json();
     this.setState({
       posts: json,
@@ -38,7 +38,7 @@ async componentDidMount() {
 
   createPost = async (post, index) => {
     try {
-      const newPostResponse = await fetch(`localhost:8081`, {
+      const newPostResponse = await fetch(`http://localhost:8081`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -58,9 +58,9 @@ async componentDidMount() {
     }
   }
 
-  updatePost = async (course) => {
+  updatePost = async (post) => {
     try {
-      const updatedPostResponse = await fetch(`localhost:8081/update/{id}`, {
+      const updatedPostResponse = await fetch(`http://localhost:8081/update/{id}`, {
         method: 'PUT',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -80,9 +80,9 @@ async componentDidMount() {
     }
   }
 
-  deleteCourse = async (course, index) => {
+  deleteCourse = async (post, index) => {
     try {
-      const deleteCourseResponse = await fetch (`localhost:8081/delete/{id}`, {
+      const deleteCourseResponse = await fetch (`http://localhost:8081/delete/{id}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -102,8 +102,18 @@ async componentDidMount() {
   render() {
     return (
       <div>
-        <h1>Home</h1>
         <NewPostForm createPost={this.createPost}/>
+        {
+          this.state.apiDataLoaded &&
+            this.state.posts.map((post, index) => {
+              return (
+                <Post
+                  {...post}
+                  key={index}
+                  post={post} />
+              )
+            })
+        }
       </div>
     )
   }
