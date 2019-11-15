@@ -32,10 +32,12 @@ class NewEventForm extends Component {
               name="code"
               type="text"
               onChange={this.handleChange} />
+
+            <button onSubmit={this.handleSubmit}>Submit</button>
           </div>
         </form>
         <h3>Extra Practice Day</h3>
-
+          <p>Time Suggestions</p>
       </div>
     )
   }
