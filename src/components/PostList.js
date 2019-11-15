@@ -4,6 +4,17 @@ import React, { Component } from 'react';
 import Post from './Post';
 
 class PostList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      posts: [],
+      name: '',
+      description: '',
+      updateName: '',
+      updateDescription: ''
+    }
+  }
 
   state = {
     posts: [],
@@ -54,8 +65,8 @@ async componentDidMount() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: post.name,
-          description: post.description
+          name: this.state.name,
+          description: this.state.description
         })
       })
       const updatedPostList = [...this.state.posts]
@@ -67,6 +78,31 @@ async componentDidMount() {
     }
   }
 
-  
+  deleteCourse = async (course, index) => {
+    try {
+      const deleteCourseResponse = await fetch (`localhost:8081/delete/{id}`, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      })
+      const deletedPost = [...this.state.course]
+      const updatedPostList = [...this.state.posts]
+      deletedPost.slice(index, 1)
+      this.setState({posts: updatedPostList})
+    } catch (error) {
+      console.log('Error deleting course')
+      console.log(error);
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Home</h1>
+      </div>
+    )
+  }
 }
 export default PostList;
