@@ -25,7 +25,7 @@ class EventList extends Component {
 
 async componentDidMount() {
   try {
-    const response = await fetch('http://localhost:8081/all')
+    const response = await fetch('http://localhost:8082/all')
     const json = await response.json();
     this.setState({
       events: json,
@@ -38,7 +38,7 @@ async componentDidMount() {
 
   createEvents = async (event, index) => {
     try {
-      const newEventResponse = await fetch(`http://localhost:8081`, {
+      const newEventResponse = await fetch(`http://localhost:8082`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -60,7 +60,7 @@ async componentDidMount() {
 
   updateEvent = async (event) => {
     try {
-      const updatedEventResponse = await fetch(`http://localhost:8081/update/{id}`, {
+      const updatedEventResponse = await fetch(`http://localhost:8082/update/{id}`, {
         method: 'PUT',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -82,7 +82,7 @@ async componentDidMount() {
 
   deleteEvent = async (event, index) => {
     try {
-      const deleteEventResponse = await fetch (`http://localhost:8081/delete/{id}`, {
+      const deleteEventResponse = await fetch (`http://localhost:8082/delete/{id}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json, text/plain, */*',

@@ -13,7 +13,7 @@ class App extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch('http://localhost:8081')
+      const response = await fetch('http://localhost:8082')
     } catch(error) {
       console.log('Error retrieving posts!')
       console.log(error)
