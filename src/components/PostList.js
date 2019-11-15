@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 //Custom components
 import Post from './Post';
+import NewPostForm from './NewPostForm';
+
 
 class PostList extends Component {
   constructor(props) {
@@ -101,6 +103,7 @@ async componentDidMount() {
     return (
       <div>
         <h1>Home</h1>
+        <NewPostForm createPost={this.createPost}/>
       </div>
     )
   }
