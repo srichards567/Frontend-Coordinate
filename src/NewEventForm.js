@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 
-class NewPostForm extends Component {
+class NewEventForm extends Component {
 
   state = {
-    newPost: {}
+    newEvent: {}
   }
 
   handleChange = (event) => {
     const attributeToChange = event.target.name
     const newValue = event.target.value
 
-    const updatedNewPost = { ...this.state.newPost }
-    updatedNewPost[attributeToChange] = newValue
-    this.setState({ newPost: updatedNewPost })
+    const updatedNewEvent = { ...this.state.newEvent }
+    updatedNewEvent[attributeToChange] = newValue
+    this.setState({ newEvent: updatedNewEvent })
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
 
-    this.props.createPost(this.state.newPost)
+    this.props.createEvent(this.state.newEvent)
   }
 
   render() {
@@ -34,11 +34,11 @@ class NewPostForm extends Component {
               onChange={this.handleChange} />
           </div>
         </form>
-
+        <h3>Extra Practice Day</h3>
 
       </div>
     )
   }
 }
 
-export default NewPostForm;
+export default NewEventForm;

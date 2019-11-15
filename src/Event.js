@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Post extends Component {
+class Event extends Component {
   render() {
 
   return (
@@ -12,4 +12,4 @@ class Post extends Component {
  }
 }
 
-export default Post;
+export default Event;

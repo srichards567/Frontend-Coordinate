@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 //Custom components
-import Post from './Post';
-import NewPostForm from './NewPostForm';
+import Event from './Event';
+import NewEventForm from './NewEventForm';
 
 
-class PostList extends Component {
+class EventList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      posts: [],
+      event: [],
       name: '',
       description: '',
       updateName: '',
@@ -19,7 +19,7 @@ class PostList extends Component {
   }
 
   state = {
-    posts: [],
+    events: [],
     apiDataLoaded: false
   }
 
@@ -28,39 +28,39 @@ async componentDidMount() {
     const response = await fetch('http://localhost:8081/all')
     const json = await response.json();
     this.setState({
-      posts: json,
+      events: json,
       apiDataLoaded: true
     })
   } catch (error) {
-    console.log('Error retrieving posts!', error)
+    console.log('Error retrieving events!', error)
   }
 }
 
-  createPost = async (post, index) => {
+  createEvents = async (event, index) => {
     try {
-      const newPostResponse = await fetch(`http://localhost:8081`, {
+      const newEventResponse = await fetch(`http://localhost:8081`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: post.name,
-          description: post.description
+          name: event.name,
+          description: event.description
         })
       })
-      const updatedPostList = [...this.state.posts]
-      updatedPostList.push(newPostResponse.data)
-      this.setState({posts: updatedPostList})
+      const updatedEventList = [...this.state.events]
+      updatedEventList.push(newEventResponse.data)
+      this.setState({events: updatedEventList})
     } catch (error) {
-      console.log('Error making new Post!')
+      console.log('Error making new Event!')
       console.log(error)
     }
   }
 
-  updatePost = async (post) => {
+  updateEvent = async (event) => {
     try {
-      const updatedPostResponse = await fetch(`http://localhost:8081/update/{id}`, {
+      const updatedEventResponse = await fetch(`http://localhost:8081/update/{id}`, {
         method: 'PUT',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -71,30 +71,30 @@ async componentDidMount() {
           description: this.state.description
         })
       })
-      const updatedPostList = [...this.state.posts]
-      updatedPostList.push(updatedPostResponse.data)
-      this.setState({posts: updatedPostList})
+      const updatedEventList = [...this.state.events]
+      updatedEventList.push(updatedEventResponse.data)
+      this.setState({events: updatedEventList})
     } catch (error) {
-      console.log('Error updating post')
+      console.log('Error updating event')
       console.log(error)
     }
   }
 
-  deleteCourse = async (post, index) => {
+  deleteEvent = async (event, index) => {
     try {
-      const deleteCourseResponse = await fetch (`http://localhost:8081/delete/{id}`, {
+      const deleteEventResponse = await fetch (`http://localhost:8081/delete/{id}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json'
         }
       })
-      const deletedPost = [...this.state.course]
-      const updatedPostList = [...this.state.posts]
-      deletedPost.slice(index, 1)
-      this.setState({posts: updatedPostList})
+      const deletedEvent = [...this.state.events]
+      const updatedEventList = [...this.state.events]
+      deletedEvent.slice(index, 1)
+      this.setState({events: updatedEventList})
     } catch (error) {
-      console.log('Error deleting course')
+      console.log('Error deleting event')
       console.log(error);
     }
   }
@@ -102,15 +102,15 @@ async componentDidMount() {
   render() {
     return (
       <div>
-        <NewPostForm createPost={this.createPost}/>
+        <NewEventForm createPost={this.createEvent}/>
         {
           this.state.apiDataLoaded &&
-            this.state.posts.map((post, index) => {
+            this.state.events.map((events, index) => {
               return (
-                <Post
-                  {...post}
+                <Event
+                  {...events}
                   key={index}
-                  post={post} />
+                  event={events} />
               )
             })
         }
@@ -118,4 +118,4 @@ async componentDidMount() {
     )
   }
 }
-export default PostList;
+export default EventList;

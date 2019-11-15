@@ -3,7 +3,7 @@ import './App.css';
 
 //Custom Imports
 import Login from './components/Login';
-import PostList from './PostList';
+import EventList from './EventList';
 
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
       <h1>Coordinate</h1>
       <p>
         Start planning today!
-      <PostList />
+      <EventList />
       </p>
     </div>
   );
