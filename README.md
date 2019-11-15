@@ -4,6 +4,8 @@
 2. Microservices
 3. PostgreSQL
 
+View the back-end for this project: github.com/srichards567/Backend-Coordinate
+
 ### General Approach
 I started with creating the back-end using microservices. I started with the eureka-server, then created the api-gateway and two services - one for users and one for events. During the initialization of all the modules in the back-end I had some issues with generating a target folder for each module, so I decided to move on to creating my react app. <br />
 
