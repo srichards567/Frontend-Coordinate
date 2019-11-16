@@ -36,8 +36,6 @@ class NewEventForm extends Component {
             <button onSubmit={this.handleSubmit}>Submit</button>
           </div>
         </form>
-        <h3>Extra Practice Day</h3>
-          <p>Time Suggestions</p>
       </div>
     )
   }
